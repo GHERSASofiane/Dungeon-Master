@@ -1,0 +1,128 @@
+<project name="Dungeon" default="compile" basedir=".">
+	<description>
+        The build file for the Dungeon example/
+    </description>
+	<!-- set global properties for this build -->
+	<property name="src" location="src" />
+	<property name="bin" location="bin" />
+
+	<!-- METTRE ICI LE NOM DU BINOME -->
+	<property name="nom1" value="GHERSA" />
+	<property name="nom2" value="FEKIR" />
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp />
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${bin}" />
+	</target>
+
+	<target name="compile" depends="init" description="compile the source ">
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac debug="true" srcdir="${src}" excludes="" destdir="${bin}" includeantruntime="false" />
+	</target>
+
+	<target name="run" depends="compile" description="run examples">
+		<echo>================ Example 1  ================</echo>
+		<java classname="main.Test_01_Map" classpath="${bin}">
+
+		</java>
+	</target>
+
+
+	<target name="runMapTest" depends="compile" description="run MapTest">
+		<echo>================ Map Positive Test  ================</echo>
+		<java classname="Tests.Map_PosTest" classpath="${bin}">
+
+		</java>
+		<echo>================ Map Negative Test  ================</echo>
+		<java classname="Tests.Map_NegTest" classpath="${bin}">
+
+		</java>
+	</target>
+
+	<target name="runEditMapTest" depends="compile" description="run EditMapTest">
+		<echo>================ EditMap Positive Test  ================</echo>
+		<java classname="Tests.EditMap_PosTest" classpath="${bin}">
+
+		</java>
+		<echo>================ EditMap Negative Test  ================</echo>
+		<java classname="Tests.EditMap_NegTest" classpath="${bin}">
+
+		</java>
+	</target>
+
+	<target name="runEnvironmentTest" depends="compile" description="run EnvironmentTest">
+		<echo>================ EditMap Positive Test  ================</echo>
+		<java classname="Tests.Environment_PosTest" classpath="${bin}">
+
+		</java>
+		<echo>================ EditMap Negative Test  ================</echo>
+		<java classname="Tests.Environment_NegTest" classpath="${bin}">
+
+		</java>
+	</target>
+
+	<target name="runMobTest" depends="compile" description="run MobTest">
+		<echo>================ Mob Positive Test  ================</echo>
+		<java classname="Tests.Mob_PosTest" classpath="${bin}">
+
+		</java>
+		<echo>================ Mob Negative Test  ================</echo>
+		<java classname="Tests.Mob_NegTest" classpath="${bin}">
+
+		</java>
+	</target>
+
+	<target name="runCowTest" depends="compile" description="run CowTest">
+		<echo>================ Cow Positive Test  ================</echo>
+		<java classname="Tests.Cow_PosTest" classpath="${bin}">
+
+		</java>
+		<echo>================ Cow Negative Test  ================</echo>
+		<java classname="Tests.Cow_NegTest" classpath="${bin}">
+
+		</java>
+	</target>
+
+	<target name="runPlayerTest" depends="compile" description="run PlayerTest">
+		<echo>================ Player Positive Test  ================</echo>
+		<java classname="Tests.Player_PosTest" classpath="${bin}">
+
+		</java>
+		<echo>================ Player Negative Test  ================</echo>
+		<java classname="Tests.Player_NegTest" classpath="${bin}">
+
+		</java>
+	</target>
+
+	<target name="runEngineTest" depends="compile" description="run EngineTest">
+		<echo>================ Engine Positive Test  ================</echo>
+		<java classname="Tests.Engine_PosTest" classpath="${bin}">
+
+		</java>
+		<echo>================ Engine Negative Test  ================</echo>
+		<java classname="Tests.Engine_NegTest" classpath="${bin}">
+
+		</java>
+	</target>
+
+			
+			
+	<target name="dist" depends="init,clean" description="Generate distribution distribution">
+		<!-- tout mettre dans l'archive -->
+		<jar basedir="." jarfile="../TME7-Dungeon-${nom1}-${nom2}-${DSTAMP}.jar" />
+	</target>
+
+	<target name="clean" description="clean up">
+		<echo>================ Removing temporary files... ================</echo>
+		<delete verbose="true">
+			<!-- Remove all *~ files -->
+			<fileset dir="${basedir}" defaultexcludes="no">
+				<include name="**/*~" />
+			</fileset>
+		</delete>
+		<echo>================ Removing build directory ================</echo>
+		<delete dir="${bin}" />
+	</target>
+</project>
