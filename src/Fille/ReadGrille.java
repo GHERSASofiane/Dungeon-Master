@@ -50,7 +50,7 @@ public class ReadGrille implements IReadGrille{
 			 tmp1 = scanner1.nextLine(); tmprc1 = tmp1.split(" ");
 			 for (int j = 0; j < col; j++) {
 					MyContent.setContent(i, j, getTypeMob(tmprc[j]));
-					MyGrille.setCell(i, j, getCell(tmprc[j]));
+					MyGrille.setCell(i, j, getCell(tmprc1[j]));
 					
 				}	
 		}
@@ -75,12 +75,13 @@ public class ReadGrille implements IReadGrille{
 	}
 	
 	public Cell getCell(String s) {
+		 
 		Cell tmp = Cell.EMP;
 		switch (s) {
 		case "IN": tmp = Cell.IN; break;
 		case "OUT": tmp = Cell.OUT; break;
 		case "EMP": tmp = Cell.EMP; break;
-		case "WLL": tmp = Cell.WLL; break;
+		case "WLL": tmp = Cell.WLL;  break;
 		case "DNO": tmp = Cell.DNO; break;
 		case "DNC": tmp = Cell.DNC; break;
 		case "DWO": tmp = Cell.DWO; break;

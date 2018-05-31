@@ -1,9 +1,28 @@
 package Graphic;
 
 import java.awt.Image;
+import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import Content.Content;
+import Errors.PostError;
+import Fille.IReadGrille;
+import Fille.ReadGrille;
+import Grille.MyGrille;
+import Impl.EngineImpl;
+import Impl.EnvironmentImpl;
+import contracts.EngineCont;
+import contracts.EnvironmentCont;
+import contracts.PlayerCont;
+import decorators.EngineDec;
+import decorators.EnvironmentDec;
+import services.EngineServ;
+import services.EnvironmentServ;
+import types.Cell;
+import types.Command;
+import types.Dir;
 
 /**
 	 *
@@ -55,7 +74,17 @@ import javax.swing.JLabel;
 		        Backward = new javax.swing.JLabel();
 		        StrafeR = new javax.swing.JLabel();
 		        StrafeL = new javax.swing.JLabel();
+		        Open_Door = new javax.swing.JButton();
 
+
+
+		        Open_Door.setText("Open Door");
+		        Open_Door.addMouseListener(new java.awt.event.MouseAdapter() {
+		            public void mouseClicked(java.awt.event.MouseEvent evt) {
+		                Open_Door(evt);
+		            }
+		        });
+		        
 		        Backward.addMouseListener(new java.awt.event.MouseAdapter() {
 		            public void mouseClicked(java.awt.event.MouseEvent evt) {
 		                click_Backward(evt);
@@ -304,7 +333,7 @@ import javax.swing.JLabel;
 		                .addContainerGap(57, Short.MAX_VALUE))
 		        );
 
-		        jPanel3.setBackground(new java.awt.Color(221, 142, 64));
+		        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
 
 		        Forward.setBackground(new java.awt.Color(178, 166, 153));
 
@@ -316,26 +345,33 @@ import javax.swing.JLabel;
 		        jPanel3Layout.setHorizontalGroup(
 		            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 		            .addGroup(jPanel3Layout.createSequentialGroup()
-		                .addGap(132, 132, 132)
-		                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-		                    .addComponent(TurnR, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-		                    .addComponent(StrafeR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-		                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 		                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 		                    .addGroup(jPanel3Layout.createSequentialGroup()
-		                        .addComponent(Backward, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+		                        .addGap(132, 132, 132)
+		                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+		                            .addComponent(TurnR, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+		                            .addComponent(StrafeR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
 		                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-		                        .addComponent(StrafeL, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+		                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+		                            .addGroup(jPanel3Layout.createSequentialGroup()
+		                                .addComponent(Backward, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+		                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+		                                .addComponent(StrafeL, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+		                            .addGroup(jPanel3Layout.createSequentialGroup()
+		                                .addComponent(Forward, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+		                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+		                                .addComponent(TurnL, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
 		                    .addGroup(jPanel3Layout.createSequentialGroup()
-		                        .addComponent(Forward, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-		                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-		                        .addComponent(TurnL, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+		                        .addGap(160, 160, 160)
+		                        .addComponent(Open_Door, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
 		                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		        );
 		        jPanel3Layout.setVerticalGroup(
 		            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 		            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
 		                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+		                .addComponent(Open_Door, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+		                .addGap(121, 121, 121)
 		                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
 		                    .addComponent(TurnL, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
 		                    .addComponent(TurnR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -372,27 +408,8 @@ import javax.swing.JLabel;
 
 		        pack();
 		        initimage();
-		    }// </editor-fold>                        
+		    }                       
 
-		    private void click_Forward(java.awt.event.MouseEvent evt) {                           
-		       
-		    }
-		    private void click_Backward(java.awt.event.MouseEvent evt) {                           
-		       
-		    }
-		    private void click_StrafeL(java.awt.event.MouseEvent evt) {                           
-		       
-		    }
-		    private void click_StrafeR(java.awt.event.MouseEvent evt) {                           
-		       
-		    }
-		    private void click_TurnL(java.awt.event.MouseEvent evt) {                           
-		       
-		    }
-		    private void click_TurnR(java.awt.event.MouseEvent evt) {                           
-		       
-		    }
-		    
 		    public static void main(String args[]) {
 		        /* Set the Nimbus look and feel */
 		        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -427,6 +444,66 @@ import javax.swing.JLabel;
 		        
 		    }
 		    
+
+		    private void Open_Door(java.awt.event.MouseEvent evt) {
+		    	
+		        if(PlayD.getNature(1, 0).equals(Cell.DNC) || PlayD.getNature(1, 0).equals(Cell.DWC)) {
+		        	switch (PlayD.getFace()) {
+					case N:
+						PlayD.getEnv().OpenDoor(PlayD.getRow()-1, PlayD.getCol());
+						break;
+					case S:
+						PlayD.getEnv().OpenDoor(PlayD.getRow()+1, PlayD.getCol());
+						break;
+					case E:
+						PlayD.getEnv().OpenDoor(PlayD.getRow(), PlayD.getCol()+1);
+						break;
+					case W:
+						PlayD.getEnv().OpenDoor(PlayD.getRow(), PlayD.getCol()-1);
+						break;
+					}
+		        	
+		        }
+		        MettreJourMap() ;
+		    } 
+		    
+		    private void click_Forward(java.awt.event.MouseEvent evt) { 
+		    	PlayD.setLastCom(Command.FW);
+		    	engD.step();
+		        MettreJourMap() ;
+		    }
+		    
+		    private void click_Backward(java.awt.event.MouseEvent evt) { 
+		    	PlayD.setLastCom(Command.BW);
+		    	engD.step();
+		        MettreJourMap() ;
+		    }
+		    
+		    private void click_StrafeL(java.awt.event.MouseEvent evt) { 
+		    	PlayD.setLastCom(Command.SR);
+		    	engD.step();
+		        MettreJourMap() ; 
+		    }
+		    
+		    private void click_StrafeR(java.awt.event.MouseEvent evt) {   
+		    	PlayD.setLastCom(Command.SL);
+		    	engD.step();
+		        MettreJourMap() ;
+		    }
+		    
+		    private void click_TurnL(java.awt.event.MouseEvent evt) {  
+		    	PlayD.setLastCom(Command.TR);
+		    	engD.step();
+		        MettreJourMap() ;
+		    }
+		    
+		    private void click_TurnR(java.awt.event.MouseEvent evt) { 
+		    	PlayD.setLastCom(Command.TL);
+		    	engD.step();
+		        MettreJourMap() ;
+		    }
+		    
+		    
 		    private void initimage(){
 		    	
 		    	Forward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagery/f.png")));                 
@@ -436,18 +513,87 @@ import javax.swing.JLabel;
 			    TurnL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagery/tl.png")));
 			    TurnR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagery/tr.png")));
 		        
-		        C_1__1.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagery/PO.png")).getImage().getScaledInstance(134, 111, Image.SCALE_DEFAULT))); 
-		        C_1_0.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagery/PF.png")).getImage().getScaledInstance(134, 111, Image.SCALE_DEFAULT))); 
-		        C_1_1.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagery/mur.jpg")).getImage().getScaledInstance(134, 111, Image.SCALE_DEFAULT))); 
-		        C_2__1.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagery/DL.png")).getImage().getScaledInstance(134, 111, Image.SCALE_DEFAULT))); 
-		        C_2_0.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagery/DL.png")).getImage().getScaledInstance(134, 111, Image.SCALE_DEFAULT))); 
-		        C_2_1.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagery/DL.png")).getImage().getScaledInstance(134, 111, Image.SCALE_DEFAULT))); 
-		        C_3__1.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagery/DL.png")).getImage().getScaledInstance(134, 111, Image.SCALE_DEFAULT))); 
-		        C_3_0.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagery/DL.png")).getImage().getScaledInstance(134, 111, Image.SCALE_DEFAULT))); 
-		        C_3_1.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagery/DL.png")).getImage().getScaledInstance(134, 111, Image.SCALE_DEFAULT))); 
+			    C_0_0.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagery/Deb.gif")).getImage().getScaledInstance(134, 111, Image.SCALE_DEFAULT))); 
+			   
+
+				// **************** Initial condition
+			    IReadGrille Gr = new ReadGrille();
+			    
+				MyGrille grille = (MyGrille) Gr.getGrille(); // grille
+				Content content = Gr.getCont(); // Content
+
+				EnvironmentServ envS = new EnvironmentImpl(content);
+				EnvironmentDec envD = new EnvironmentCont(envS);
+				
+				EngineServ engS = new EngineImpl();
+				engD = new EngineCont(engS);
+
+				// **************** treatment
+				envD.init(4, 4, grille); // Init
+				engD.init(envD);  
+			
+				
+				for (int i = 0; i < engD.getEntities().size() ; i++) {
+					if(engD.getEntities().get(i).getClass().getName().equals("contracts.PlayerCont"))
+					PlayD = (PlayerCont) engD.getEntities().get(i);
+					PlayD.init(PlayD.getEnv(), PlayD.getRow(), PlayD.getCol(), Dir.E);
+				}
+				
+				MettreJourMap();
+		    }
+		    
+		    private void MettreJourMap() {
+
+		    	int tmp = 0;
+		    	JLabel[] tmpLab =  {C_1__1, C_1_0, C_1_1, C_2__1, C_2_0, C_2_1, C_3__1, C_3_0, C_3_1};
+		    	
+				for (int H = 1; H <= 3; H++) {
+					for (int W = -1; W <= 1; W++) {
+						InsertImage(tmpLab[tmp], "noir.jpeg");
+						if(!PlayD.isViewable(H, W)) {
+							InsertImage(tmpLab[tmp], "noir.jpeg");
+						}else {
+							if( PlayD.getNature(H, W).equals(Cell.EMP)) {
+								switch (PlayD.getContent(H, W)) {
+								case monstre: InsertImage(tmpLab[tmp], "monstre.png"); break;
+								case projectile: InsertImage(tmpLab[tmp], "projectile.jpg"); break;
+								case pierre: InsertImage(tmpLab[tmp], "pierre.jpg"); break;
+								case caisse: InsertImage(tmpLab[tmp], "caisse.jpg"); break;
+								case Cow: InsertImage(tmpLab[tmp], "Cow.jpg"); break;
+								default:
+									break;
+								}
+							}else {
+								
+								switch (PlayD.getNature(H, W)) {
+								case EMP:  break;
+								case WLL: InsertImage(tmpLab[tmp], "mur.jpg"); break;
+								case DNO: InsertImage(tmpLab[tmp], "PO.png"); break;
+								case DWO: InsertImage(tmpLab[tmp], "PO.png"); break;
+								case DNC: InsertImage(tmpLab[tmp], "PF.png"); break;
+								case DWC: InsertImage(tmpLab[tmp], "PF.png"); break;
+								case IN:   break;
+								case OUT:   break;
+								default:
+									break;
+								}
+							}
+						}
+											
+
+						tmp++;
+					}
+				}
+		    	
 		    
 		    }
 
+		    private void InsertImage(JLabel c, String img) {
+		    	
+		    	 c.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagery/"+img)).getImage().getScaledInstance(134, 111, Image.SCALE_DEFAULT))); 
+			       
+		    }
+		    
 		    // Variables declaration - do not modify    
 		    public static javax.swing.JLabel C_0_0;
 		    public static javax.swing.JLabel C_1_0;
@@ -459,6 +605,9 @@ import javax.swing.JLabel;
 		    public static javax.swing.JLabel C_3_0;
 		    public static javax.swing.JLabel C_3_1;
 		    public static javax.swing.JLabel C_3__1;
+
+		    private javax.swing.JButton Open_Door;
+		    
 		    public static javax.swing.JPanel Case_0_0;
 		    public static javax.swing.JPanel Case_1_0;
 		    public static javax.swing.JPanel Case_1_1;
@@ -480,5 +629,7 @@ import javax.swing.JLabel;
 		    public static javax.swing.JPanel jPanel2;
 		    public static javax.swing.JPanel jPanel3;
 		    public static javax.swing.JProgressBar life;
+		    public static EngineDec engD;	
+		    public static PlayerCont PlayD = null;
 		    // End of variables declaration                   
 		}

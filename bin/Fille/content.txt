@@ -1,5 +1,5 @@
 4 5
-NO NO NO NO NO
-joueur NO monstre NO NO
+joueur NO NO NO NO
+NO NO monstre NO NO
 NO NO pierre EMP OUT
 NO NO pierre NO NO

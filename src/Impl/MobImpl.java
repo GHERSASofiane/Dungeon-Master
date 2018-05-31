@@ -55,6 +55,7 @@ public class MobImpl implements MobServ {
 
 				if (((this.Env.CellNature(Row - 1, Col).equals(Cell.EMP))
 						|| (this.Env.CellNature(Row - 1, Col).equals(Cell.DNO))
+						|| (this.Env.CellNature(Row - 1, Col).equals(Cell.DWO))
 						|| (this.Env.CellNature(Row - 1, Col).equals(Cell.OUT))	
 						|| (this.Env.CellNature(Row - 1, Col).equals(Cell.IN))						
 						)
@@ -76,6 +77,7 @@ public class MobImpl implements MobServ {
 
 				if (((this.Env.CellNature(Row + 1, Col).equals(Cell.EMP))
 						|| (this.Env.CellNature(Row + 1, Col).equals(Cell.DNO))
+						|| (this.Env.CellNature(Row + 1, Col).equals(Cell.DWO))
 						|| (this.Env.CellNature(Row + 1, Col).equals(Cell.OUT))	
 						|| (this.Env.CellNature(Row + 1, Col).equals(Cell.IN))	)
 						&& (this.Env.CellContent(Row + 1, Col).get().equals(TypeMob.NO))) {
@@ -96,6 +98,7 @@ public class MobImpl implements MobServ {
 
 				if (((this.Env.CellNature(Row, Col + 1).equals(Cell.EMP))
 						|| (this.Env.CellNature(Row, Col + 1).equals(Cell.DWO))
+						|| (this.Env.CellNature(Row , Col+1).equals(Cell.DNO))
 						|| (this.Env.CellNature(Row, Col + 1).equals(Cell.OUT))	
 						|| (this.Env.CellNature(Row, Col + 1).equals(Cell.IN))	)
 						&& (this.Env.CellContent(Row, Col + 1).get().equals(TypeMob.NO))) {
@@ -117,6 +120,7 @@ public class MobImpl implements MobServ {
 
 				if (((this.Env.CellNature(Row, Col - 1).equals(Cell.EMP))
 						|| (this.Env.CellNature(Row, Col - 1).equals(Cell.DWO))
+						|| (this.Env.CellNature(Row , Col - 1).equals(Cell.DNO))
 						|| (this.Env.CellNature(Row, Col - 1).equals(Cell.OUT))	
 						|| (this.Env.CellNature(Row, Col - 1).equals(Cell.IN)))
 						&& (this.Env.CellContent(Row, Col - 1).get().equals(TypeMob.NO))) {
@@ -145,6 +149,7 @@ public class MobImpl implements MobServ {
 
 				if (((this.Env.CellNature(Row + 1, Col).equals(Cell.EMP))
 						|| (this.Env.CellNature(Row + 1, Col).equals(Cell.DNO))
+						|| (this.Env.CellNature(Row + 1, Col).equals(Cell.DWO))
 						|| (this.Env.CellNature(Row + 1, Col).equals(Cell.OUT))	
 						|| (this.Env.CellNature(Row + 1, Col).equals(Cell.IN)))
 						&& (this.Env.CellContent(Row + 1, Col).get().equals(TypeMob.NO))) {
@@ -166,6 +171,7 @@ public class MobImpl implements MobServ {
 
 				if (((this.Env.CellNature(Row - 1, Col).equals(Cell.EMP))
 						|| (this.Env.CellNature(Row - 1, Col).equals(Cell.DNO))
+						|| (this.Env.CellNature(Row - 1, Col).equals(Cell.DWO))
 						|| (this.Env.CellNature(Row - 1, Col).equals(Cell.OUT))	
 						|| (this.Env.CellNature(Row - 1, Col).equals(Cell.IN)))
 						&& (this.Env.CellContent(Row - 1, Col).get().equals(TypeMob.NO))) {
@@ -186,6 +192,7 @@ public class MobImpl implements MobServ {
 
 				if (((this.Env.CellNature(Row, Col - 1).equals(Cell.EMP))
 						|| (this.Env.CellNature(Row, Col - 1).equals(Cell.DWO))
+						|| (this.Env.CellNature(Row, Col - 1).equals(Cell.DNO))
 						|| (this.Env.CellNature(Row, Col - 1).equals(Cell.OUT))	
 						|| (this.Env.CellNature(Row, Col - 1).equals(Cell.IN)))
 						&& (this.Env.CellContent(Row, Col - 1).get().equals(TypeMob.NO))) {
@@ -206,6 +213,7 @@ public class MobImpl implements MobServ {
 
 				if (((this.Env.CellNature(Row, Col + 1).equals(Cell.EMP))
 						|| (this.Env.CellNature(Row, Col + 1).equals(Cell.DWO))
+						|| (this.Env.CellNature(Row, Col + 1).equals(Cell.DNO))
 						|| (this.Env.CellNature(Row, Col + 1).equals(Cell.OUT))	
 						|| (this.Env.CellNature(Row, Col + 1).equals(Cell.IN)))
 						&& (this.Env.CellContent(Row, Col + 1).get().equals(TypeMob.NO))) {
@@ -282,6 +290,7 @@ public class MobImpl implements MobServ {
 
 				if (((this.Env.CellNature(Row, Col - 1).equals(Cell.EMP))
 						|| (this.Env.CellNature(Row, Col - 1).equals(Cell.DWO))
+						|| (this.Env.CellNature(Row, Col - 1).equals(Cell.DNO))
 						|| (this.Env.CellNature(Row, Col - 1).equals(Cell.OUT))	
 						|| (this.Env.CellNature(Row, Col - 1).equals(Cell.IN)))
 						&& (this.Env.CellContent(Row, Col - 1).get().equals(TypeMob.NO))) {
@@ -302,6 +311,7 @@ public class MobImpl implements MobServ {
 
 				if (((this.Env.CellNature(Row, Col + 1).equals(Cell.EMP))
 						|| (this.Env.CellNature(Row, Col + 1).equals(Cell.DWO))
+						|| (this.Env.CellNature(Row, Col + 1).equals(Cell.DNO))
 						|| (this.Env.CellNature(Row, Col + 1).equals(Cell.OUT))	
 						|| (this.Env.CellNature(Row, Col + 1).equals(Cell.IN)))
 						&& (this.Env.CellContent(Row, Col + 1).get().equals(TypeMob.NO))) {
@@ -322,6 +332,7 @@ public class MobImpl implements MobServ {
 
 				if (((this.Env.CellNature(Row - 1, Col).equals(Cell.EMP))
 						|| (this.Env.CellNature(Row - 1, Col).equals(Cell.DNO))
+						|| (this.Env.CellNature(Row - 1, Col).equals(Cell.DWO))
 						|| (this.Env.CellNature(Row - 1, Col).equals(Cell.OUT))	
 						|| (this.Env.CellNature(Row - 1, Col).equals(Cell.IN)))
 						&& (this.Env.CellContent(Row - 1, Col).get().equals(TypeMob.NO))) {
@@ -342,6 +353,7 @@ public class MobImpl implements MobServ {
 
 				if (((this.Env.CellNature(Row + 1, Col).equals(Cell.EMP))
 						|| (this.Env.CellNature(Row + 1, Col).equals(Cell.DNO))
+						|| (this.Env.CellNature(Row + 1, Col).equals(Cell.DWO))
 						|| (this.Env.CellNature(Row + 1, Col).equals(Cell.OUT))	
 						|| (this.Env.CellNature(Row + 1, Col).equals(Cell.IN)))
 						&& (this.Env.CellContent(Row + 1, Col).get().equals(TypeMob.NO))) {
