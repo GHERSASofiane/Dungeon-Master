@@ -75,6 +75,7 @@ import types.Dir;
 		        StrafeR = new javax.swing.JLabel();
 		        StrafeL = new javax.swing.JLabel();
 		        Open_Door = new javax.swing.JButton();
+		        Close_Door = new javax.swing.JButton();
 
 
 
@@ -82,6 +83,13 @@ import types.Dir;
 		        Open_Door.addMouseListener(new java.awt.event.MouseAdapter() {
 		            public void mouseClicked(java.awt.event.MouseEvent evt) {
 		                Open_Door(evt);
+		            }
+		        });
+
+		        Close_Door.setText("Close Door");
+		        Close_Door.addMouseListener(new java.awt.event.MouseAdapter() {
+		            public void mouseClicked(java.awt.event.MouseEvent evt) {
+		                Close_Door(evt);
 		            }
 		        });
 		        
@@ -363,15 +371,19 @@ import types.Dir;
 		                                .addComponent(TurnL, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
 		                    .addGroup(jPanel3Layout.createSequentialGroup()
 		                        .addGap(160, 160, 160)
-		                        .addComponent(Open_Door, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-		                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		        );
+		                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+		                                .addComponent(Close_Door)
+		                                .addComponent(Open_Door))))
+		                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		            );
 		        jPanel3Layout.setVerticalGroup(
 		            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 		            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
 		                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-		                .addComponent(Open_Door, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-		                .addGap(121, 121, 121)
+		                .addComponent(Close_Door)
+		                .addGap(18, 18, 18)
+		                .addComponent(Open_Door)
+		                .addGap(73, 73, 73)
 		                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
 		                    .addComponent(TurnL, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
 		                    .addComponent(TurnR, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -460,6 +472,28 @@ import types.Dir;
 						break;
 					case W:
 						PlayD.getEnv().OpenDoor(PlayD.getRow(), PlayD.getCol()-1);
+						break;
+					}
+		        	
+		        }
+		        MettreJourMap() ;
+		    } 
+
+		    private void Close_Door(java.awt.event.MouseEvent evt) {                            
+
+		        if(PlayD.getNature(1, 0).equals(Cell.DNO) || PlayD.getNature(1, 0).equals(Cell.DWO)) {
+		        	switch (PlayD.getFace()) {
+					case N:
+						PlayD.getEnv().CloseDoor(PlayD.getRow()-1, PlayD.getCol());
+						break;
+					case S:
+						PlayD.getEnv().CloseDoor(PlayD.getRow()+1, PlayD.getCol());
+						break;
+					case E:
+						PlayD.getEnv().CloseDoor(PlayD.getRow(), PlayD.getCol()+1);
+						break;
+					case W:
+						PlayD.getEnv().CloseDoor(PlayD.getRow(), PlayD.getCol()-1);
 						break;
 					}
 		        	
@@ -607,6 +641,7 @@ import types.Dir;
 		    public static javax.swing.JLabel C_3__1;
 
 		    private javax.swing.JButton Open_Door;
+		    private javax.swing.JButton Close_Door;
 		    
 		    public static javax.swing.JPanel Case_0_0;
 		    public static javax.swing.JPanel Case_1_0;
